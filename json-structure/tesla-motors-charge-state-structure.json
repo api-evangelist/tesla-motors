@@ -1,0 +1,138 @@
+{
+  "title": "Tesla Charge State Structure",
+  "description": "JSON structure documentation for Tesla vehicle battery and charging state",
+  "type": "object",
+  "fields": [
+    {
+      "name": "battery_level",
+      "type": "integer",
+      "description": "Current battery charge as a percentage (0-100)"
+    },
+    {
+      "name": "battery_range",
+      "type": "number",
+      "description": "Estimated range in miles at current charge level"
+    },
+    {
+      "name": "charge_current_request",
+      "type": "integer",
+      "description": "Requested charging current in amperes"
+    },
+    {
+      "name": "charge_enable_request",
+      "type": "boolean",
+      "description": "Whether charging is requested to be enabled"
+    },
+    {
+      "name": "charge_limit_soc",
+      "type": "integer",
+      "description": "State-of-charge percentage at which charging will stop"
+    },
+    {
+      "name": "charge_limit_soc_max",
+      "type": "integer",
+      "description": "Maximum allowed charge limit percentage"
+    },
+    {
+      "name": "charge_limit_soc_min",
+      "type": "integer",
+      "description": "Minimum allowed charge limit percentage"
+    },
+    {
+      "name": "charge_miles_added_ideal",
+      "type": "number",
+      "description": "Ideal miles of range added in current session"
+    },
+    {
+      "name": "charge_miles_added_rated",
+      "type": "number",
+      "description": "Rated miles of range added in current session"
+    },
+    {
+      "name": "charge_port_door_open",
+      "type": "boolean",
+      "description": "Whether the charge port door is open"
+    },
+    {
+      "name": "charge_port_latch",
+      "type": "string",
+      "description": "State of the charge port latch (Engaged, Disengaged)"
+    },
+    {
+      "name": "charge_rate",
+      "type": "number",
+      "description": "Current charging rate in miles per hour"
+    },
+    {
+      "name": "charge_to_max_range",
+      "type": "boolean",
+      "description": "Whether charging to maximum range is enabled"
+    },
+    {
+      "name": "charger_actual_current",
+      "type": "integer",
+      "description": "Actual charging current in amperes"
+    },
+    {
+      "name": "charger_phases",
+      "type": "integer",
+      "nullable": true,
+      "description": "Number of electrical phases used for charging"
+    },
+    {
+      "name": "charger_pilot_current",
+      "type": "integer",
+      "description": "Pilot current limit from the charger in amperes"
+    },
+    {
+      "name": "charger_power",
+      "type": "integer",
+      "description": "Current charger power in kW"
+    },
+    {
+      "name": "charger_voltage",
+      "type": "integer",
+      "description": "Charging voltage in volts"
+    },
+    {
+      "name": "charging_state",
+      "type": "string",
+      "description": "Current charging state (Charging, Complete, Disconnected, Stopped, NoPower)"
+    },
+    {
+      "name": "conn_charge_cable",
+      "type": "string",
+      "description": "Type of charging cable connected (e.g., SAE J1772, Combo)"
+    },
+    {
+      "name": "est_battery_range",
+      "type": "number",
+      "description": "Estimated remaining battery range in miles"
+    },
+    {
+      "name": "fast_charger_brand",
+      "type": "string",
+      "description": "Brand of fast charger connected (e.g., Tesla, Other)"
+    },
+    {
+      "name": "fast_charger_present",
+      "type": "boolean",
+      "description": "Whether a DC fast charger (Supercharger) is connected"
+    },
+    {
+      "name": "fast_charger_type",
+      "type": "string",
+      "description": "Type of fast charger (e.g., Tesla, CCS, CHAdeMO)"
+    },
+    {
+      "name": "minutes_to_full_charge",
+      "type": "integer",
+      "description": "Estimated minutes until charging completes"
+    },
+    {
+      "name": "usable_battery_level",
+      "type": "integer",
+      "description": "Usable battery level as a percentage"
+    }
+  ]
+}

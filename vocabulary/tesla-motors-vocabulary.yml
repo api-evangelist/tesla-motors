@@ -1,0 +1,119 @@
+title: Tesla Motors Vocabulary
+description: >-
+  Vocabulary and taxonomy for Tesla Motors electric vehicle API concepts,
+  covering vehicle telemetry, charging systems, climate control, remote commands,
+  safety features, and connectivity states.
+created: '2026-05-03'
+modified: '2026-05-03'
+
+domains:
+  - name: Vehicle Identity
+    description: Vehicle identification and ownership
+    terms:
+      - name: VIN
+        definition: Vehicle Identification Number — a 17-character unique identifier for each Tesla vehicle
+      - name: Vehicle ID
+        definition: Tesla's internal numeric identifier for a vehicle in the owner's account
+      - name: Display Name
+        definition: The user-assigned nickname for the vehicle shown in the Tesla app
+      - name: Option Codes
+        definition: A comma-separated list of codes describing the vehicle's manufacturing configuration
+      - name: API Version
+        definition: The version of the Tesla vehicle API supported by the vehicle's firmware
+
+  - name: Connectivity State
+    description: Vehicle online/offline states
+    terms:
+      - name: Online
+        definition: The vehicle is awake and connected, ready to receive commands
+      - name: Asleep
+        definition: The vehicle has entered low-power sleep mode to preserve battery
+      - name: Offline
+        definition: The vehicle is not reachable via the Tesla API (out of cellular range)
+      - name: Wake Up
+        definition: A command that transitions the vehicle from sleep/offline to online state
+
+  - name: Charging
+    description: Battery and charging system concepts
+    terms:
+      - name: State of Charge (SOC)
+        definition: The current battery charge level expressed as a percentage (0-100%)
+      - name: Charge Limit
+        definition: The maximum SOC percentage to which the vehicle will charge (typically 80% for daily use)
+      - name: Charging State
+        definition: >-
+          Current charging activity status — Charging, Complete, Disconnected, Stopped, or NoPower
+      - name: Supercharger
+        definition: Tesla's proprietary DC fast-charging network capable of adding ~200 miles of range per hour
+      - name: Wall Connector
+        definition: Tesla's home AC charging equipment (Level 2, up to 11.5 kW)
+      - name: Charge Rate
+        definition: The speed at which the battery is gaining charge, expressed in miles per hour
+      - name: J1772
+        definition: The standard North American AC charging connector for Level 1 and Level 2 charging
+      - name: CCS
+        definition: Combined Charging System — a standard DC fast-charge connector (used on non-Tesla vehicles)
+      - name: Scheduled Charging
+        definition: A feature to delay charging to off-peak electricity rate hours
+      - name: Preconditioning
+        definition: Warming or cooling the battery and cabin before departure while still plugged in
+
+  - name: Climate Control
+    description: Thermal management and HVAC system
+    terms:
+      - name: Auto Conditioning
+        definition: Tesla's climate control system that maintains a set cabin temperature
+      - name: Bioweapon Defense Mode
+        definition: A HEPA-grade air filtration setting available on Model X, S, and Y vehicles
+      - name: Climate Keeper
+        definition: A setting that keeps the cabin at a comfortable temperature when the vehicle is parked
+      - name: Cabin Overheat Protection
+        definition: An automated feature that activates cooling when parked in hot weather to prevent interior damage
+      - name: Preconditioning
+        definition: Pre-heating or pre-cooling the cabin and battery using grid power before driving
+
+  - name: Remote Commands
+    description: Commands that can be sent to the vehicle remotely
+    terms:
+      - name: Door Lock
+        definition: Remote command to lock all vehicle doors and windows
+      - name: Door Unlock
+        definition: Remote command to unlock all vehicle doors
+      - name: Trunk Actuate
+        definition: Remote command to open the front or rear trunk
+      - name: Flash Lights
+        definition: Remote command to briefly flash the headlights to locate the vehicle
+      - name: Honk Horn
+        definition: Remote command to briefly sound the vehicle's horn
+      - name: Remote Start
+        definition: Remote command to start the vehicle's drive system without a key
+      - name: Speed Limit Mode
+        definition: A pin-protected feature that restricts maximum vehicle speed
+      - name: Valet Mode
+        definition: A pin-protected mode that limits speed and prevents access to private information
+
+  - name: Safety and Security
+    description: Vehicle security and safety features
+    terms:
+      - name: Sentry Mode
+        definition: >-
+          A security feature that uses the vehicle's cameras to monitor and record
+          suspicious activity when parked
+      - name: Pin to Drive
+        definition: A feature requiring a PIN entry before the vehicle can be driven
+      - name: Child Lock
+        definition: Feature preventing rear passengers from opening doors from inside
+      - name: Trunk Lock
+        definition: Ability to lock the trunk separately from doors
+
+  - name: Navigation and Location
+    description: GPS and routing features
+    terms:
+      - name: Drive State
+        definition: Real-time GPS coordinates, heading, speed, and gear position
+      - name: Navigation Request
+        definition: Remote command to set a navigation destination from the app or API
+      - name: Nearby Charging Sites
+        definition: API endpoint returning nearby Superchargers and destination chargers with availability
+      - name: Homelink
+        definition: Built-in garage door opener integration triggered via vehicle or API

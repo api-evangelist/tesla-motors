@@ -1,0 +1,78 @@
+extends: spectral:oas
+rules:
+  tesla-operation-ids-present:
+    description: All operations must have operationId defined
+    message: "Operation at {{path}} is missing operationId"
+    severity: error
+    given: "$.paths.*[get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  tesla-operation-id-pascal-case:
+    description: Operation IDs should use PascalCase
+    message: "Operation ID '{{value}}' should use PascalCase"
+    severity: warn
+    given: "$.paths.*[get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z0-9]+$"
+
+  tesla-bearer-auth:
+    description: Tesla API uses bearer token authentication
+    message: "Security scheme should use bearer token"
+    severity: warn
+    given: "$.components.securitySchemes.*"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            type:
+              const: http
+            scheme:
+              const: bearer
+
+  tesla-tags-required:
+    description: Each operation should have at least one tag
+    message: "Operation at {{path}} should have at least one tag"
+    severity: warn
+    given: "$.paths.*[get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  tesla-vehicle-id-path-param:
+    description: Vehicle endpoints should use vehicle_id path parameter
+    message: "Vehicle path should use {vehicle_id} parameter"
+    severity: info
+    given: "$.paths./api/1/vehicles/*"
+    then:
+      function: truthy
+
+  tesla-summaries-title-case:
+    description: Operation summaries should use Title Case
+    message: "Summary '{{value}}' should use Title Case"
+    severity: warn
+    given: "$.paths.*[get,post,put,patch,delete].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  tesla-response-200:
+    description: Operations should define a 200 response
+    message: "Operation should define a 200 OK response"
+    severity: warn
+    given: "$.paths.*[get,post]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            responses:
+              type: object
+              required: ["200"]
