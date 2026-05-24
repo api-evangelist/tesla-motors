@@ -69,6 +69,8 @@ common:
   - name: Tesla API Ruby Gem
     url: https://github.com/timdorr/tesla-api
     type: SDK
+  - type: LLMsTxt
+    url: https://tesla-api.timdorr.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
