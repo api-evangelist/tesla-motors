@@ -62,11 +62,11 @@ common:
     type: Website
   - name: Tesla Developer SDK (Python)
     url: https://github.com/tdorssers/TeslaPy
-    type: SDK
+    type: SDKs
   - name: Tesla API Ruby Gem
     url: https://github.com/timdorr/tesla-api
-    type: SDK
-  - type: LLMsTxt
+    type: SDKs
+  - type: LlmsText
     url: https://tesla-api.timdorr.com/llms.txt
 maintainers:
   - FN: Kin Lane
