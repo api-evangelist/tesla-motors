@@ -43,6 +43,8 @@ apis:
           https://raw.githubusercontent.com/api-evangelist/tesla-motors/refs/heads/main/openapi/tesla-motors-owner-openapi.yml
         type: OpenAPI
 common:
+  - type: AgenticAccess
+    url: agentic-access/tesla-motors-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/tesla-motors-vulnerability-disclosure.yml
   - type: DomainSecurity
