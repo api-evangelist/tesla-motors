@@ -6,6 +6,18 @@ description: >-
   provides programmatic access to Tesla vehicles for monitoring state, controlling climate, locking/unlocking doors,
   managing charging, and executing remote commands.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 image: https://www.tesla.com/favicon.ico
 tags:
   - Automobiles
@@ -19,29 +31,62 @@ created: '2026-03-16'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: tesla-motors:owner-api
-    name: Tesla Owner API
-    description: >-
-      The Tesla Owner API (unofficial) provides access to Tesla vehicle telemetry, state data, and remote command
-      capabilities for personal vehicles. Supports vehicle listing, state retrieval (charge, climate, drive, vehicle
-      config), and commands including wake-up, door lock/unlock, climate control, charging, trunk control, and media
-      playback.
-    humanURL: https://tesla-api.timdorr.com/
-    baseURL: https://owner-api.teslamotors.com
-    tags:
-      - Vehicles
-      - Telemetry
-      - Remote Commands
-      - Charging
-      - Climate Control
-    properties:
-      - url: https://tesla-api.timdorr.com/
-        type: Documentation
-      - url: https://github.com/timdorr/tesla-api
-        type: Repository
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/tesla-motors/refs/heads/main/openapi/tesla-motors-owner-openapi.yml
-        type: OpenAPI
+- aid: tesla-motors:tesla-motors-authentication-api
+  name: Tesla Motors Authentication API
+  description: The Authentication API from Tesla Motors — 1 operation(s) for authentication.
+  humanURL: https://tesla-api.timdorr.com/
+  baseURL: https://owner-api.teslamotors.com
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/tesla-motors-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://tesla-api.timdorr.com/
+  - type: Repository
+    url: https://github.com/timdorr/tesla-api
+- aid: tesla-motors:tesla-motors-media-control-api
+  name: Tesla Motors Media Control API
+  description: The Media Control API from Tesla Motors — 8 operation(s) for media control.
+  humanURL: https://tesla-api.timdorr.com/
+  baseURL: https://owner-api.teslamotors.com
+  tags:
+  - Media Control
+  properties:
+  - type: OpenAPI
+    url: openapi/tesla-motors-media-control-api-openapi.yml
+  - type: Documentation
+    url: https://tesla-api.timdorr.com/
+  - type: Repository
+    url: https://github.com/timdorr/tesla-api
+- aid: tesla-motors:tesla-motors-vehicle-commands-api
+  name: Tesla Motors Vehicle Commands API
+  description: The Vehicle Commands API from Tesla Motors — 45 operation(s) for vehicle commands.
+  humanURL: https://tesla-api.timdorr.com/
+  baseURL: https://owner-api.teslamotors.com
+  tags:
+  - Vehicle Commands
+  properties:
+  - type: OpenAPI
+    url: openapi/tesla-motors-vehicle-commands-api-openapi.yml
+  - type: Documentation
+    url: https://tesla-api.timdorr.com/
+  - type: Repository
+    url: https://github.com/timdorr/tesla-api
+- aid: tesla-motors:tesla-motors-vehicles-api
+  name: Tesla Motors Vehicles API
+  description: The Vehicles API from Tesla Motors — 11 operation(s) for vehicles.
+  humanURL: https://tesla-api.timdorr.com/
+  baseURL: https://owner-api.teslamotors.com
+  tags:
+  - Vehicles
+  properties:
+  - type: OpenAPI
+    url: openapi/tesla-motors-vehicles-api-openapi.yml
+  - type: Documentation
+    url: https://tesla-api.timdorr.com/
+  - type: Repository
+    url: https://github.com/timdorr/tesla-api
 common:
   - type: AgenticAccess
     url: agentic-access/tesla-motors-agentic-access.yml
