@@ -88,6 +88,9 @@ apis:
   - type: Repository
     url: https://github.com/timdorr/tesla-api
 common:
+  - type: License
+    name: MIT
+    url: https://github.com/timdorr/tesla-api/blob/master/LICENSE
   - type: AgenticAccess
     url: agentic-access/tesla-motors-agentic-access.yml
   - type: VulnerabilityDisclosure
