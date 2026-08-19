@@ -1,0 +1,124 @@
+{
+  "item": [
+    {
+      "id": "43f01dbe-e758-4e71-9da2-838d76e2cbed",
+      "name": "Authentication",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "608df75a-cca0-4660-bcaa-5fe232d04fe7",
+          "name": "Tesla Get an Access Token",
+          "request": {
+            "name": "Tesla Get an Access Token",
+            "description": {
+              "content": "Performs the login. Takes in an plain text email and password, matching the owner's login information for [https://my.teslamotors.com/user/login](https://my.teslamotors.com/user/login).\nReturns a `access_token` which is passed along as a header with all future requests to authenticate the user.\nYou must provide the `Authorization: Bearer {access_token}` header in all other requests.\nThe current client ID and secret are [available here](http://pastebin.com/YiLPDggh)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "oauth",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"grant_type\": \"<string>\",\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"refresh_token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "527c26f9-32fb-4a23-9845-72def66a0051",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "oauth",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"grant_type\": \"password\",\n  \"client_id\": \"abc\",\n  \"client_secret\": \"123\",\n  \"email\": \"elon@teslamotors.com\",\n  \"password\": \"edisonsux\",\n  \"refresh_token\": \"0f0f0f0f0f0ff0f0f0f0f0f0f0f0f0f0f0f0f0f0f0ff0f0f0f0f0f0f0f0f0f\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"abc123\",\n  \"token_type\": \"bearer\",\n  \"expires_in\": 7776000,\n  \"created_at\": 1457385291,\n  \"refresh_token\": \"cba321\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://owner-api.teslamotors.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "52ef68ec-4be1-4d48-9366-d999fe8f403f",
+    "name": "Tesla Motors Owner Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tesla Motors Owner API provides programmatic access to Tesla vehicles for monitoring state data (charge, climate, drive, vehicle config) and executing remote commands (wake up, lock/unlock doors, control climate, manage charging, control trunk, media playback, and more).\n\nContact Support:\n Name: Tesla Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

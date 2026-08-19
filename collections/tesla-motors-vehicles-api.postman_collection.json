@@ -1,0 +1,1056 @@
+{
+  "item": [
+    {
+      "id": "1d58aaf5-7fe0-4bf5-9be5-a0fe74668911",
+      "name": "Vehicles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bb053f15-b811-49a4-a7c6-24de9ef3afa0",
+          "name": "Tesla List all Vehicles",
+          "request": {
+            "name": "Tesla List all Vehicles",
+            "description": {
+              "content": "Retrieve a list of your owned vehicles (includes vehicles not yet shipped!)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "vehicles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9e4242d-5b5d-4fc4-b97f-df8ef9d436e5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "vehicles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1,\n  \"response\": [\n    {\n      \"color\": \"string\",\n      \"display_name\": \"string\",\n      \"id\": \"string\",\n      \"option_codes\": \"string\",\n      \"vehicle_id\": \"string\",\n      \"vin\": \"string\",\n      \"tokens\": [\n        \"string\",\n        \"string\"\n      ],\n      \"state\": \"string\"\n    },\n    {\n      \"color\": \"string\",\n      \"display_name\": \"string\",\n      \"id\": \"string\",\n      \"option_codes\": \"string\",\n      \"vehicle_id\": \"string\",\n      \"vin\": \"string\",\n      \"tokens\": [\n        \"string\",\n        \"string\"\n      ],\n      \"state\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8dd5cd11-20ac-48aa-bd6e-5e63ec3e0034",
+          "name": "Tesla Retrieve a vehicle",
+          "request": {
+            "name": "Tesla Retrieve a vehicle",
+            "description": {
+              "content": "Retrieve a specific vehicle",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "vehicles",
+                ":vehicle_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicle_id",
+                  "description": "(Required) The id of the Vehicle."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "03285d10-7f98-4302-a83c-8476ba878716",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "vehicles",
+                    ":vehicle_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicle_id",
+                      "description": "(Required) The id of the Vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": {\n    \"id\": 321,\n    \"option_codes\": \"MS01,RENA,TM00,DRLH,PF00,BT85,PBCW,RFPO,WT19,IBMB,IDPB,TR00,SU01,SC01,TP01,AU01,CH00,HP00,PA00,PS00,AD02,X020,X025,X001,X003,X007,X011,X013\",\n    \"user_id\": 123,\n    \"vehicle_id\": 1234567890,\n    \"vin\": \"5YJSA1CN5CFP01657\",\n    \"tokens\": [\n      \"x\",\n      \"x\"\n    ],\n    \"state\": \"online\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d596572-c18a-436b-8ae0-b6d038a2ded9",
+          "name": "Tesla Mobile Access",
+          "request": {
+            "name": "Tesla Mobile Access",
+            "description": {
+              "content": "Determines if mobile access to the vehicle is enabled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "vehicles",
+                ":vehicle_id",
+                "mobile_enabled"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicle_id",
+                  "description": "(Required) The id of the Vehicle."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b14a575-2d7e-48da-ad82-750c882b4f2f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "vehicles",
+                    ":vehicle_id",
+                    "mobile_enabled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicle_id",
+                      "description": "(Required) The id of the Vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e059cd5f-7152-46a1-a7d4-01008e1f15a8",
+          "name": "Tesla Charge State",
+          "request": {
+            "name": "Tesla Charge State",
+            "description": {
+              "content": "Returns the state of charge in the battery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "vehicles",
+                ":vehicle_id",
+                "data_request",
+                "charge_state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicle_id",
+                  "description": "(Required) The id of the Vehicle."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1ef377e-b25e-411e-b05d-0d9fe4613923",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "vehicles",
+                    ":vehicle_id",
+                    "data_request",
+                    "charge_state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicle_id",
+                      "description": "(Required) The id of the Vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": {\n    \"charging_state\": \"string\",\n    \"fast_charger_type\": \"string\",\n    \"fast_charger_brand\": \"string\",\n    \"charge_limit_soc\": 3721,\n    \"charge_limit_soc_std\": 264,\n    \"charge_limit_soc_min\": 5153,\n    \"charge_limit_soc_max\": 3553,\n    \"charge_to_max_range\": true,\n    \"max_range_charge_counter\": 2477,\n    \"fast_charger_present\": false,\n    \"battery_range\": 8232.746707098966,\n    \"est_battery_range\": 4526.209484666941,\n    \"ideal_battery_range\": 5540.022226890607,\n    \"battery_level\": 8519,\n    \"usable_battery_level\": 5545,\n    \"charge_energy_added\": 5167.611632038406,\n    \"charge_miles_added_rated\": 7024.8941214129145,\n    \"charge_miles_added_ideal\": 9211.350686613894,\n    \"charger_voltage\": 1846,\n    \"charger_pilot_current\": 7094,\n    \"charger_actual_current\": 3269,\n    \"charger_power\": 1563,\n    \"time_to_full_charge\": 4549.922347480767,\n    \"trip_charging\": false,\n    \"charge_rate\": 4017.522645491067,\n    \"charge_port_door_open\": false,\n    \"conn_charge_cable\": \"string\",\n    \"scheduled_charging_start_time\": \"string\",\n    \"scheduled_charging_pending\": false,\n    \"user_charge_enable_request\": true,\n    \"charge_enable_request\": true,\n    \"charger_phases\": 6157,\n    \"charge_port_latch\": \"string\",\n    \"charge_current_request\": 1633,\n    \"charge_current_request_max\": 3716,\n    \"managed_charging_active\": true,\n    \"managed_charging_user_canceled\": true,\n    \"managed_charging_start_time\": 6037.955307425509,\n    \"battery_heater_on\": true,\n    \"not_enough_power_to_heat\": true,\n    \"timestamp\": 5032.135583734534\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c663b0b2-92cc-4734-a76d-9966c4c7a3a6",
+          "name": "Tesla Climate Settings",
+          "request": {
+            "name": "Tesla Climate Settings",
+            "description": {
+              "content": "Returns the current temperature and climate control state.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "vehicles",
+                ":vehicle_id",
+                "data_request",
+                "climate_state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicle_id",
+                  "description": "(Required) The id of the Vehicle."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3b54e1b-11da-42bc-b142-ae546f02232d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "vehicles",
+                    ":vehicle_id",
+                    "data_request",
+                    "climate_state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicle_id",
+                      "description": "(Required) The id of the Vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": {\n    \"inside_temp\": 898.1388578900917,\n    \"outside_temp\": 608.5737318307382,\n    \"driver_temp_setting\": 7295.446600891466,\n    \"passenger_temp_setting\": 6830.309496000722,\n    \"left_temp_direction\": 9177,\n    \"right_temp_direction\": 5232,\n    \"is_front_defroster_on\": true,\n    \"is_rear_defroster_on\": true,\n    \"fan_status\": 2380,\n    \"is_climate_on\": false,\n    \"min_avail_temp\": 8714,\n    \"max_avail_temp\": 5375,\n    \"seat_heater_left\": \"string\",\n    \"seat_heater_right\": \"string\",\n    \"seat_heater_rear_left\": \"string\",\n    \"seat_heater_rear_right\": \"string\",\n    \"seat_heater_rear_center\": \"string\",\n    \"seat_heater_rear_right_back\": \"string\",\n    \"seat_heater_rear_left_back\": \"string\",\n    \"battery_heater\": false,\n    \"battery_heater_no_power\": true,\n    \"steering_wheel_heater\": true,\n    \"wiper_blade_heater\": true,\n    \"side_mirror_heaters\": false,\n    \"is_preconditioning\": false,\n    \"smart_preconditioning\": true,\n    \"is_auto_conditioning_on\": true,\n    \"defrost_mode\": 9579,\n    \"timestamp\": 7496.622313727238\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ca45c27-02c4-484c-a2c8-4a1b42b95924",
+          "name": "Tesla Driving and Position",
+          "request": {
+            "name": "Tesla Driving and Position",
+            "description": {
+              "content": "Returns the driving and position state of the vehicle.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "vehicles",
+                ":vehicle_id",
+                "data_request",
+                "drive_state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicle_id",
+                  "description": "(Required) The id of the Vehicle."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f0fea55-4449-409b-bdf8-94a28cb7e707",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "vehicles",
+                    ":vehicle_id",
+                    "data_request",
+                    "drive_state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicle_id",
+                      "description": "(Required) The id of the Vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": {\n    \"shift_state\": \"string\",\n    \"speed\": 6060.066516151157,\n    \"power\": 6498.136856772476,\n    \"latitude\": 424.08084778638,\n    \"longitude\": 5831.472638361423,\n    \"heading\": 545,\n    \"gps_as_of\": 5447.088167857993,\n    \"native_location_supported\": 2981,\n    \"native_latitude\": 7618.834500856112,\n    \"native_longitude\": 4154.960848676763,\n    \"native_type\": \"string\",\n    \"timestamp\": 9825.664817566156\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67171c56-18a2-44b1-bd88-5bb85ba534ff",
+          "name": "Tesla GUI Settings",
+          "request": {
+            "name": "Tesla GUI Settings",
+            "description": {
+              "content": "Returns various information about the GUI settings of the car, such as unit format and range display.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "vehicles",
+                ":vehicle_id",
+                "data_request",
+                "gui_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicle_id",
+                  "description": "(Required) The id of the Vehicle."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87bb2d15-148a-42da-a32e-8926f7bf9471",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "vehicles",
+                    ":vehicle_id",
+                    "data_request",
+                    "gui_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicle_id",
+                      "description": "(Required) The id of the Vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": {\n    \"gui_distance_units\": \"string\",\n    \"gui_temperature_units\": \"string\",\n    \"gui_charge_rate_units\": \"string\",\n    \"gui_24_hour_time\": false,\n    \"gui_range_display\": \"string\",\n    \"gui_tirepressure_units\": \"string\",\n    \"timestamp\": 1735.788907824256\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a736a3ea-2be6-4d46-9815-0e903bd45dfb",
+          "name": "Tesla Vehicle State",
+          "request": {
+            "name": "Tesla Vehicle State",
+            "description": {
+              "content": "Returns the vehicle's physical state, such as which doors are open.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "vehicles",
+                ":vehicle_id",
+                "data_request",
+                "vehicle_state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicle_id",
+                  "description": "(Required) The id of the Vehicle."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38356f04-1e75-49d2-92aa-f2abe23f876a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "vehicles",
+                    ":vehicle_id",
+                    "data_request",
+                    "vehicle_state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicle_id",
+                      "description": "(Required) The id of the Vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": {\n    \"api_version\": 3431,\n    \"autopark_state\": \"string\",\n    \"autopark_state_v2\": \"string\",\n    \"autopark_style\": \"string\",\n    \"calendar_supported\": false,\n    \"car_version\": \"string\",\n    \"center_display_state\": 292,\n    \"df\": 1563,\n    \"dr\": 6952,\n    \"ft\": 6896,\n    \"homelink_nearby\": false,\n    \"last_autopark_error\": \"string\",\n    \"locked\": true,\n    \"media_state\": {\n      \"remote_control_enabled\": false\n    },\n    \"notifications_supported\": true,\n    \"odometer\": 2563.8386737358755,\n    \"parsed_calendar_supported\": true,\n    \"pf\": 8291,\n    \"pr\": 7497,\n    \"remote_start\": false,\n    \"remote_start_supported\": false,\n    \"rt\": 2117,\n    \"sentry_mode\": false,\n    \"software_update\": {\n      \"expected_duration_sec\": 1599,\n      \"status\": \"string\",\n      \"download_perc\": 973,\n      \"install_perc\": 8305,\n      \"version\": \"string\"\n    },\n    \"sun_roof_percent_open\": 9446,\n    \"sun_roof_state\": \"string\",\n    \"timestamp\": 9642.685966439549,\n    \"valet_mode\": true,\n    \"vehicle_name\": \"string\",\n    \"speed_limit_mode\": {\n      \"active\": false,\n      \"current_limit_mph\": 7183.864067286681,\n      \"max_limit_mph\": 381.24870693402977,\n      \"min_limit_mph\": 9286.574965261021,\n      \"pin_code_set\": true\n    },\n    \"fd_window\": 4645,\n    \"fp_window\": 2698,\n    \"homelink_device_count\": 3227,\n    \"rd_window\": 6144,\n    \"rp_window\": 721,\n    \"smart_summon_available\": false,\n    \"summon_standby_mode_enabled\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d158c25b-90b7-475e-adc3-f04015340b1c",
+          "name": "Tesla Vehicle Config",
+          "request": {
+            "name": "Tesla Vehicle Config",
+            "description": {
+              "content": "Returns the vehicle's configuration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "vehicles",
+                ":vehicle_id",
+                "data_request",
+                "vehicle_config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicle_id",
+                  "description": "(Required) The id of the Vehicle."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80d08657-7905-4f4c-89a2-d6fcaee1a79a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "vehicles",
+                    ":vehicle_id",
+                    "data_request",
+                    "vehicle_config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicle_id",
+                      "description": "(Required) The id of the Vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": {\n    \"can_actuate_trunks\": false,\n    \"can_accept_navigation_requests\": true,\n    \"car_special_type\": \"string\",\n    \"car_type\": \"string\",\n    \"charge_port_type\": \"string\",\n    \"eu_vehicle\": false,\n    \"exterior_color\": \"string\",\n    \"has_ludicrous_mode\": true,\n    \"motorized_charge_port\": false,\n    \"perf_config\": \"string\",\n    \"plg\": false,\n    \"rear_seat_heaters\": 2072.4315256620876,\n    \"rear_seat_type\": 6616.122423718804,\n    \"rhd\": false,\n    \"roof_color\": \"string\",\n    \"seat_type\": 4991.479131397787,\n    \"spoiler_type\": \"string\",\n    \"sun_roof_installed\": 3787.045621146382,\n    \"third_row_seats\": \"string\",\n    \"timestamp\": 7150.392234247768,\n    \"trim_badging\": \"string\",\n    \"wheel_type\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4b37aa8-0aa0-42c8-899a-7a1c47f562a8",
+          "name": "Tesla Vehicle Data",
+          "request": {
+            "name": "Tesla Vehicle Data",
+            "description": {
+              "content": "Returns all vehicle ∂ata, potentially cached",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "vehicles",
+                ":vehicle_id",
+                "vehicle_data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "endpoints",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicle_id",
+                  "description": "(Required) The id of the Vehicle."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43645003-3ca6-4dbf-a342-4c0895ba97da",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "vehicles",
+                    ":vehicle_id",
+                    "vehicle_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "endpoints",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicle_id",
+                      "description": "(Required) The id of the Vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": {\n    \"color\": \"string\",\n    \"display_name\": \"string\",\n    \"id\": \"string\",\n    \"option_codes\": \"string\",\n    \"vehicle_id\": \"string\",\n    \"vin\": \"string\",\n    \"user_id\": 983.8425015042229,\n    \"tokens\": [\n      \"string\",\n      \"string\"\n    ],\n    \"state\": \"string\",\n    \"in_service\": false,\n    \"id_s\": \"string\",\n    \"calendar_enabled\": false,\n    \"backseat_token\": \"string\",\n    \"backseat_token_updated_at\": 6967.165021711124,\n    \"gui_settings\": {\n      \"gui_distance_units\": \"string\",\n      \"gui_temperature_units\": \"string\",\n      \"gui_charge_rate_units\": \"string\",\n      \"gui_24_hour_time\": false,\n      \"gui_range_display\": \"string\",\n      \"gui_tirepressure_units\": \"string\",\n      \"timestamp\": 8384.450908172497\n    },\n    \"climate_state\": {\n      \"inside_temp\": 5966.222139317958,\n      \"outside_temp\": 1675.520619647557,\n      \"driver_temp_setting\": 2676.1963141928336,\n      \"passenger_temp_setting\": 8309.204695612607,\n      \"left_temp_direction\": 3615,\n      \"right_temp_direction\": 8060,\n      \"is_front_defroster_on\": true,\n      \"is_rear_defroster_on\": true,\n      \"fan_status\": 3416,\n      \"is_climate_on\": true,\n      \"min_avail_temp\": 333,\n      \"max_avail_temp\": 343,\n      \"seat_heater_left\": \"string\",\n      \"seat_heater_right\": \"string\",\n      \"seat_heater_rear_left\": \"string\",\n      \"seat_heater_rear_right\": \"string\",\n      \"seat_heater_rear_center\": \"string\",\n      \"seat_heater_rear_right_back\": \"string\",\n      \"seat_heater_rear_left_back\": \"string\",\n      \"battery_heater\": false,\n      \"battery_heater_no_power\": true,\n      \"steering_wheel_heater\": false,\n      \"wiper_blade_heater\": false,\n      \"side_mirror_heaters\": false,\n      \"is_preconditioning\": false,\n      \"smart_preconditioning\": false,\n      \"is_auto_conditioning_on\": false,\n      \"defrost_mode\": 9429,\n      \"timestamp\": 3852.8846262657667\n    },\n    \"drive_state\": {\n      \"shift_state\": \"string\",\n      \"speed\": 2299.079460706559,\n      \"power\": 4169.86528891361,\n      \"latitude\": 5310.630819836329,\n      \"longitude\": 9850.899621193512,\n      \"heading\": 2128,\n      \"gps_as_of\": 6100.482029077092,\n      \"native_location_supported\": 2342,\n      \"native_latitude\": 3996.3507262106114,\n      \"native_longitude\": 2306.5149454299017,\n      \"native_type\": \"string\",\n      \"timestamp\": 4937.8330925015525\n    },\n    \"vehicle_state\": {\n      \"api_version\": 2958,\n      \"autopark_state\": \"string\",\n      \"autopark_state_v2\": \"string\",\n      \"autopark_style\": \"string\",\n      \"calendar_supported\": false,\n      \"car_version\": \"string\",\n      \"center_display_state\": 3895,\n      \"df\": 6301,\n      \"dr\": 3058,\n      \"ft\": 778,\n      \"homelink_nearby\": true,\n      \"last_autopark_error\": \"string\",\n      \"locked\": false,\n      \"media_state\": {\n        \"remote_control_enabled\": false\n      },\n      \"notifications_supported\": false,\n      \"odometer\": 8677.356194943748,\n      \"parsed_calendar_supported\": false,\n      \"pf\": 3,\n      \"pr\": 1300,\n      \"remote_start\": false,\n      \"remote_start_supported\": false,\n      \"rt\": 8046,\n      \"sentry_mode\": true,\n      \"software_update\": {\n        \"expected_duration_sec\": 7301,\n        \"status\": \"string\",\n        \"download_perc\": 7314,\n        \"install_perc\": 2142,\n        \"version\": \"string\"\n      },\n      \"sun_roof_percent_open\": 3331,\n      \"sun_roof_state\": \"string\",\n      \"timestamp\": 1760.2771828444186,\n      \"valet_mode\": true,\n      \"vehicle_name\": \"string\",\n      \"speed_limit_mode\": {\n        \"active\": false,\n        \"current_limit_mph\": 1212.50282919125,\n        \"max_limit_mph\": 4922.496055829289,\n        \"min_limit_mph\": 1934.115533534444,\n        \"pin_code_set\": false\n      },\n      \"fd_window\": 6277,\n      \"fp_window\": 8209,\n      \"homelink_device_count\": 3673,\n      \"rd_window\": 3496,\n      \"rp_window\": 4020,\n      \"smart_summon_available\": false,\n      \"summon_standby_mode_enabled\": true\n    },\n    \"charge_state\": {\n      \"charging_state\": \"string\",\n      \"fast_charger_type\": \"string\",\n      \"fast_charger_brand\": \"string\",\n      \"charge_limit_soc\": 8758,\n      \"charge_limit_soc_std\": 917,\n      \"charge_limit_soc_min\": 7,\n      \"charge_limit_soc_max\": 5119,\n      \"charge_to_max_range\": true,\n      \"max_range_charge_counter\": 3303,\n      \"fast_charger_present\": false,\n      \"battery_range\": 195.72737346946312,\n      \"est_battery_range\": 7767.450364642121,\n      \"ideal_battery_range\": 9126.930287610972,\n      \"battery_level\": 4227,\n      \"usable_battery_level\": 9424,\n      \"charge_energy_added\": 5151.467105656398,\n      \"charge_miles_added_rated\": 6274.587109234858,\n      \"charge_miles_added_ideal\": 7582.368996287801,\n      \"charger_voltage\": 4506,\n      \"charger_pilot_current\": 9102,\n      \"charger_actual_current\": 3474,\n      \"charger_power\": 8740,\n      \"time_to_full_charge\": 61.412964615149555,\n      \"trip_charging\": true,\n      \"charge_rate\": 6494.074999422872,\n      \"charge_port_door_open\": false,\n      \"conn_charge_cable\": \"string\",\n      \"scheduled_charging_start_time\": \"string\",\n      \"scheduled_charging_pending\": true,\n      \"user_charge_enable_request\": false,\n      \"charge_enable_request\": true,\n      \"charger_phases\": 7634,\n      \"charge_port_latch\": \"string\",\n      \"charge_current_request\": 9982,\n      \"charge_current_request_max\": 7458,\n      \"managed_charging_active\": true,\n      \"managed_charging_user_canceled\": true,\n      \"managed_charging_start_time\": 3165.672743071498,\n      \"battery_heater_on\": true,\n      \"not_enough_power_to_heat\": true,\n      \"timestamp\": 8778.67357496879\n    },\n    \"vehicle_config\": {\n      \"can_actuate_trunks\": true,\n      \"can_accept_navigation_requests\": true,\n      \"car_special_type\": \"string\",\n      \"car_type\": \"string\",\n      \"charge_port_type\": \"string\",\n      \"eu_vehicle\": true,\n      \"exterior_color\": \"string\",\n      \"has_ludicrous_mode\": false,\n      \"motorized_charge_port\": true,\n      \"perf_config\": \"string\",\n      \"plg\": false,\n      \"rear_seat_heaters\": 8756.947235896489,\n      \"rear_seat_type\": 193.48743315158566,\n      \"rhd\": true,\n      \"roof_color\": \"string\",\n      \"seat_type\": 1090.9220804751897,\n      \"spoiler_type\": \"string\",\n      \"sun_roof_installed\": 9648.693227629532,\n      \"third_row_seats\": \"string\",\n      \"timestamp\": 6392.905864775356,\n      \"trim_badging\": \"string\",\n      \"wheel_type\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24051fc3-13aa-4f02-9f03-6169589c23fa",
+          "name": "Tesla Get Nearby Chargers",
+          "request": {
+            "name": "Tesla Get Nearby Chargers",
+            "description": {
+              "content": "Get a list of nearby charging sites",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "vehicles",
+                ":vehicle_id",
+                "nearby_charging_sites"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicle_id",
+                  "description": "(Required) The id of the Vehicle."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21a4f886-2302-4118-9b78-c6eb6f66ebbf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "vehicles",
+                    ":vehicle_id",
+                    "nearby_charging_sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicle_id",
+                      "description": "(Required) The id of the Vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": {\n    \"congestion_sync_time_utc_secs\": 5074.548958605438,\n    \"destination_charging\": [\n      {\n        \"location\": {\n          \"lat\": 7591.966385738385,\n          \"long\": 6900.064047984115\n        },\n        \"name\": \"string\",\n        \"type\": \"destination\",\n        \"distance_miles\": 3761.0716381692177\n      },\n      {\n        \"location\": {\n          \"lat\": 9671.434514396968,\n          \"long\": 9725.848278810914\n        },\n        \"name\": \"string\",\n        \"type\": \"destination\",\n        \"distance_miles\": 4527.198734553305\n      }\n    ],\n    \"superchargers\": [\n      {\n        \"location\": {\n          \"lat\": 9718.1215841307,\n          \"long\": 4290.482527019757\n        },\n        \"name\": \"string\",\n        \"type\": \"supercharger\",\n        \"distance_miles\": 8831.754421008745,\n        \"available_stalls\": 7848.615441240181,\n        \"total_stalls\": 4434.417682861302,\n        \"site_closed\": true\n      },\n      {\n        \"location\": {\n          \"lat\": 7905.1242505090495,\n          \"long\": 3555.5832518664665\n        },\n        \"name\": \"string\",\n        \"type\": \"supercharger\",\n        \"distance_miles\": 1501.9890256724455,\n        \"available_stalls\": 8767.891782730288,\n        \"total_stalls\": 7694.98411954318,\n        \"site_closed\": true\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://owner-api.teslamotors.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "adeeb497-3869-4b50-af53-5e9b82fab4d6",
+    "name": "Tesla Motors Owner Authentication Vehicles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tesla Motors Owner API provides programmatic access to Tesla vehicles for monitoring state data (charge, climate, drive, vehicle config) and executing remote commands (wake up, lock/unlock doors, control climate, manage charging, control trunk, media playback, and more).\n\nContact Support:\n Name: Tesla Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
