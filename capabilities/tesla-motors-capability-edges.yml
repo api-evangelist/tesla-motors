@@ -1,0 +1,37 @@
+slug: tesla-motors
+provider: Tesla Motors
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Automotive & Mobility
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Vehicle Commands
+  spec_file: tesla-motors-vehicle-commands-api-openapi.yml
+  capability_id: BC-3460
+  capability_id_l1: BC-3460
+  capability_name: Vehicle Connected Services Management
+  confidence: 0.8
+  evidence: POST /api/1/vehicles/{vehicle_id}/command/set_charge_limit ... 'Tesla Wake Up Car', 'Tesla
+    Set Valet Mode', 'Tesla Open Charge Port'
+  reason: Cloud API issuing remote commands to connected vehicles (wake, lock, climate, charging) — this
+    is operation of connected vehicle services. No single L2 covers remote command execution, so only
+    the L1 is asserted.
+- tag: Vehicles
+  spec_file: tesla-motors-vehicles-api-openapi.yml
+  capability_id: BC-3460.10
+  capability_id_l1: BC-3460
+  capability_name: Vehicle Connectivity Platform Operations
+  confidence: 0.7
+  evidence: GET /api/1/vehicles/{vehicle_id}/data_request/vehicle_state 'Tesla Vehicle State'; 'monitoring
+    state data (charge, climate, drive, vehicle config)'
+  reason: Retrieval of vehicle state/telemetry from the cloud for a connected fleet maps to connected
+    services; vehicle-to-cloud telemetry platform is the closest L2, though a vehicle data platform reading
+    is also arguable, hence moderate confidence.

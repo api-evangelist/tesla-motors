@@ -101,6 +101,9 @@ apis:
   - type: Repository
     url: https://github.com/timdorr/tesla-api
 common:
+  - type: CapabilityMap
+    url: capabilities/tesla-motors-capability-edges.yml
+    name: Tesla Motors Business Capability Map
   - type: IssueTracker
     url: https://github.com/timdorr/tesla-api/issues
   - type: Releases
