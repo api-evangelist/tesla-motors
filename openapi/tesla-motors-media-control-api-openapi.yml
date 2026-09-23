@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Tesla Motors Owner Authentication Media Control API
+  title: Tesla Motors Owner Media Control API
   description: The Tesla Motors Owner API provides programmatic access to Tesla vehicles for monitoring state data (charge, climate, drive, vehicle config) and executing remote commands (wake up, lock/unlock doors, control climate, manage charging, control trunk, media playback, and more).
   version: '1.0'
   contact:
@@ -189,6 +189,15 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
+    AdjustVolumeRequest:
+      title: Adjust Volume request
+      type: object
+      properties:
+        volume:
+          type: number
+          description: Volume level, from 0-11
+          format: int32
+          example: 1
     CommandResponse:
       title: CommandResponse
       required:
@@ -203,12 +212,3 @@ components:
             reason:
               type: string
           description: ''
-    AdjustVolumeRequest:
-      title: Adjust Volume request
-      type: object
-      properties:
-        volume:
-          type: number
-          description: Volume level, from 0-11
-          format: int32
-          example: 1

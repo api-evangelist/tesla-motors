@@ -1,10 +1,7 @@
 {
   "provider": "tesla-motors",
   "sources": [
-    "tesla-motors-authentication-api-openapi.yml",
-    "tesla-motors-media-control-api-openapi.yml",
-    "tesla-motors-vehicle-commands-api-openapi.yml",
-    "tesla-motors-vehicles-api-openapi.yml"
+    "_original/tesla-motors-owner-openapi.yml"
   ],
   "outputs": [
     "tesla-motors-authentication-api-openapi.yml",
@@ -15,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "tesla-motors-owner-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "tesla-motors-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tesla-motors-media-control-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tesla-motors-vehicle-commands-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tesla-motors-vehicles-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

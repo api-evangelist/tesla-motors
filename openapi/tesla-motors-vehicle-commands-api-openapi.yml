@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Tesla Motors Owner Authentication Vehicle Commands API
+  title: Tesla Motors Owner Vehicle Commands API
   description: The Tesla Motors Owner API provides programmatic access to Tesla vehicles for monitoring state data (charge, climate, drive, vehicle config) and executing remote commands (wake up, lock/unlock doors, control climate, manage charging, control trunk, media playback, and more).
   version: '1.0'
   contact:
@@ -1159,36 +1159,22 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    MovePanoRoofRequest:
-      title: Move Panoramic Roof
+    SetVehicleNameRequest:
+      title: Set Vehicle Name
       type: object
       properties:
-        state:
+        vehicle_name:
           type: string
-          description: The desired state of the panoramic roof. The approximate percent open values for each state are `open` = 100%, `close` = 0%, `comfort` = 80%, and `vent` = ~15%
-          enum:
-          - open
-          - close
-          - comfort
-          - vent
-          - move
-          x-enum-elements:
-          - name: open
-            description: ''
-          - name: close
-            description: ''
-          - name: comfort
-            description: ''
-          - name: vent
-            description: ''
-          - name: move
-            description: ''
-        percent:
-          type: number
-          description: The percentage to move the roof to.
-          format: double
+          description: Vehicle name
+          example: My Cool Car
+    RemoteSteeringWheelHeaterRequest:
+      title: Remote Steering Wheel Heater
+      type: object
+      properties:
+        'on':
+          type: boolean
       example:
-        state: vent
+        'on': true
     SetClimateKeeperRequest:
       title: Set Climate Keeper
       type: object
@@ -1204,6 +1190,24 @@ components:
           - 3
       example:
         climate_keeper_mode: 1
+    SpeedLimitRequest:
+      title: Speed Limit Request
+      type: object
+      properties:
+        pin:
+          type: string
+          description: The current, or if activating, new, speed limit PIN
+      example:
+        pin: 1234
+    RemoteStartRequest:
+      title: Remote Start
+      type: object
+      properties:
+        password:
+          type: string
+          description: The password to the authenticated my.teslamotors.com account.
+      example:
+        password: hunter2
     CommandResponse:
       title: CommandResponse
       required:
@@ -1218,23 +1222,45 @@ components:
             reason:
               type: string
           description: ''
-    SpeedLimitRequest:
-      title: Speed Limit Request
+    NavigationRequestRequest:
+      title: Navigation Request request
       type: object
       properties:
-        pin:
+        type:
           type: string
-          description: The current, or if activating, new, speed limit PIN
-      example:
-        pin: 1234
-    RemoteSteeringWheelHeaterRequest:
-      title: Remote Steering Wheel Heater
+          description: Do not change
+          example: share_ext_content_raw
+          default: share_ext_content_raw
+        value:
+          type: object
+          properties:
+            android.intent.extra.TEXT:
+              type: string
+              description: Must match this syntax "DATA_TO_SEND_TO_NAV_SYSTEM\n\nhttps://goo.gl/maps/X"
+              example: '45500 Fremont Blvd, Fremont, CA 94538
+
+
+                https://goo.gl/maps/X'
+        locale:
+          type: string
+          description: Do not change
+          example: en-us
+          default: en-us
+        timestamp_ms:
+          type: string
+          description: Unix timestamp
+    SetCabinOverheatProtectionRequest:
+      title: Set Cabin Overheat Protection
       type: object
       properties:
         'on':
           type: boolean
+        fan_only:
+          type: boolean
+          description: Only supported by some vehicles. Must be false on unsupported vehicles.
       example:
         'on': true
+        fan_only: false
     SetSpeedLimitRequest:
       title: Set Speed Limit Request
       type: object
@@ -1245,12 +1271,172 @@ components:
           format: int32
       example:
         limit_mph: 75
-    OpenTrunkRequest:
+    RemoteAutoSeatClimateRequest:
+      title: Remote Auto Seat Climate
       type: object
       properties:
-        which_trunk:
+        auto_seat_position:
+          type: integer
+          description: 'The desired seat to toggle auto mode for.  SeatHeaterFrontLeft: 0, SeatHeaterFrontRight: 1, SeatHeaterRearLeft: 2, SeatHeaterRearLeftBack: 3, SeatHeaterRearCenter: 4, SeatHeaterRearRight: 5, SeatHeaterRearRightBack: 6, SeatHeater3rdRowLeft: 7, SeatHeater3rdRowRight: 8'
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+        auto_climate_on:
+          type: boolean
+          description: Whether to enable or disable auto climate mode
+      example:
+        auto_seat_position: 0
+        auto_climate_on: true
+    SetChargeLimitRequest:
+      title: Set Charge Limit
+      type: object
+      properties:
+        percent:
+          type: integer
+          description: Percentage to set Charge Limit to.
+          format: int32
+      example:
+        percent: 80
+    TriggerHomelinkRequest:
+      title: Trigger Homelink
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+      example:
+        lat: 123.456
+        lng: -123.456
+    SetChargingAmpsRequest:
+      title: Set Charging Amps
+      type: object
+      properties:
+        charging_amps:
+          type: integer
+          description: Charging Current in Amps
+          format: int32
+      example:
+        charging_amps: 40
+    ShareRequest:
+      title: Share request (v10 only)
+      type: object
+      properties:
+        type:
           type: string
-          description: The trunk to open. `front` or `rear
+          description: Change to "share_dest_content_coords" if using lat/long
+          example: share_ext_content_raw
+          default: share_ext_content_raw
+        value:
+          type: object
+          properties:
+            android.intent.extra.TEXT:
+              type: string
+              description: Must match this syntax "DATA_TO_SEND_TO_NAV_SYSTEM\n\nhttps://goo.gl/maps/X"
+              example: '45500 Fremont Blvd, Fremont, CA 94538
+
+
+                https://goo.gl/maps/X'
+            lat:
+              type: number
+              description: Latitude of destination to send. Only send with 'long'
+              format: double
+              example: 123.456
+            long:
+              type: number
+              description: Longitude of destination to send. Only send with 'lat'
+              format: double
+              example: -123.456
+        locale:
+          type: string
+          description: Locale this request should be treated as
+          example: en-US
+        timestamp:
+          type: number
+          description: UNIX timestamp indicating when this request was sent
+          example: 1574041714569
+    SetValetRequest:
+      title: Set Valet Mode
+      type: object
+      properties:
+        'on':
+          type: boolean
+          description: Whether to enable or disable valet mode.
+        password:
+          type: string
+          description: (optional) A 4 digit PIN code to unlock the car.
+      example:
+        'on': true
+        password: 1234
+    ScheduledChargingRequest:
+      title: Scheduled Charging Request
+      type: object
+      properties:
+        time:
+          type: integer
+          description: Integer representing the desired charging start time. Value is number of minutes from midnight in intervals of 15
+          format: int32
+        enable:
+          type: boolean
+      example:
+        time: 60
+        enable: true
+    ScheduledDepartureRequest:
+      title: Scheduled Departure Request
+      type: object
+      properties:
+        departure_time:
+          type: integer
+          description: Integer representing the desired departure time. Value is number of minutes from midnight in intervals of 15
+          format: int32
+        enable:
+          type: boolean
+        preconditioning_enabled:
+          type: boolean
+        preconditioning_weekdays_only:
+          type: boolean
+        off_peak_charging_enabled:
+          type: boolean
+        off_peak_charging_weekdays_only:
+          type: boolean
+        end_off_peak_time:
+          type: integer
+          description: Integer representing the desired off peak end time. Value is number of minutes from midnight in intervals of 15
+          format: int32
+      example:
+        departure_time: 180
+        enable: true
+        preconditioning_enabled: true
+        preconditioning_weekdays_only: true
+        off_peak_charging_enabled: false
+        off_peak_charging_weekdays_only: false
+        end_off_peak_time: 60
+    SentryModeRequest:
+      title: Sentry Mode
+      type: object
+      properties:
+        'on':
+          type: boolean
+      example:
+        'on': true
+    SetBioweaponModeRequest:
+      title: Set Bioweapon Mode
+      type: object
+      properties:
+        'on':
+          type: boolean
+      example:
+        'on': true
     SetTempsRequest:
       title: Set SetTemperatures
       type: object
@@ -1266,56 +1452,6 @@ components:
       example:
         driver_temp: 70.0
         passenger_temp: 72.0
-    TriggerHomelinkRequest:
-      title: Trigger Homelink
-      type: object
-      properties:
-        lat:
-          type: number
-          format: double
-        lon:
-          type: number
-          format: double
-      example:
-        lat: 123.456
-        lng: -123.456
-    RemoteSeatCoolerRequest:
-      title: Remote Seat Cooler
-      type: object
-      properties:
-        seat_position:
-          type: integer
-          description: 'The desired seat to adjust the cooler for.  SeatHeaterFrontLeft: 0, SeatHeaterFrontRight: 1, SeatHeaterRearLeft: 2, SeatHeaterRearLeftBack: 3, SeatHeaterRearCenter: 4, SeatHeaterRearRight: 5, SeatHeaterRearRightBack: 6, SeatHeater3rdRowLeft: 7, SeatHeater3rdRowRight: 8'
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          - 7
-          - 8
-        seat_cooler_level:
-          type: integer
-          description: Seat cooler level
-          format: int32
-          enum:
-          - 1
-          - 2
-          - 3
-      example:
-        seat_position: 0
-        seat_cooler_level: 2
-    SetBioweaponModeRequest:
-      title: Set Bioweapon Mode
-      type: object
-      properties:
-        'on':
-          type: boolean
-      example:
-        'on': true
     RemoteSeatHeaterRequest:
       title: Remote Seat Heater
       type: object
@@ -1364,106 +1500,27 @@ components:
         lat: 123.456
         lng: -123.456
         command: vent
-    SetValetRequest:
-      title: Set Valet Mode
+    OpenTrunkRequest:
       type: object
       properties:
-        'on':
-          type: boolean
-          description: Whether to enable or disable valet mode.
-        password:
+        which_trunk:
           type: string
-          description: (optional) A 4 digit PIN code to unlock the car.
-      example:
-        'on': true
-        password: 1234
-    SentryModeRequest:
-      title: Sentry Mode
+          description: The trunk to open. `front` or `rear
+    MaxDefrostRequest:
+      title: Max Defrost
       type: object
       properties:
         'on':
           type: boolean
       example:
         'on': true
-    NavigationRequestRequest:
-      title: Navigation Request request
+    RemoteSeatCoolerRequest:
+      title: Remote Seat Cooler
       type: object
       properties:
-        type:
-          type: string
-          description: Do not change
-          example: share_ext_content_raw
-          default: share_ext_content_raw
-        value:
-          type: object
-          properties:
-            android.intent.extra.TEXT:
-              type: string
-              description: Must match this syntax "DATA_TO_SEND_TO_NAV_SYSTEM\n\nhttps://goo.gl/maps/X"
-              example: '45500 Fremont Blvd, Fremont, CA 94538
-
-
-                https://goo.gl/maps/X'
-        locale:
-          type: string
-          description: Do not change
-          example: en-us
-          default: en-us
-        timestamp_ms:
-          type: string
-          description: Unix timestamp
-    ShareRequest:
-      title: Share request (v10 only)
-      type: object
-      properties:
-        type:
-          type: string
-          description: Change to "share_dest_content_coords" if using lat/long
-          example: share_ext_content_raw
-          default: share_ext_content_raw
-        value:
-          type: object
-          properties:
-            android.intent.extra.TEXT:
-              type: string
-              description: Must match this syntax "DATA_TO_SEND_TO_NAV_SYSTEM\n\nhttps://goo.gl/maps/X"
-              example: '45500 Fremont Blvd, Fremont, CA 94538
-
-
-                https://goo.gl/maps/X'
-            lat:
-              type: number
-              description: Latitude of destination to send. Only send with 'long'
-              format: double
-              example: 123.456
-            long:
-              type: number
-              description: Longitude of destination to send. Only send with 'lat'
-              format: double
-              example: -123.456
-        locale:
-          type: string
-          description: Locale this request should be treated as
-          example: en-US
-        timestamp:
-          type: number
-          description: UNIX timestamp indicating when this request was sent
-          example: 1574041714569
-    SetVehicleNameRequest:
-      title: Set Vehicle Name
-      type: object
-      properties:
-        vehicle_name:
-          type: string
-          description: Vehicle name
-          example: My Cool Car
-    RemoteAutoSeatClimateRequest:
-      title: Remote Auto Seat Climate
-      type: object
-      properties:
-        auto_seat_position:
+        seat_position:
           type: integer
-          description: 'The desired seat to toggle auto mode for.  SeatHeaterFrontLeft: 0, SeatHeaterFrontRight: 1, SeatHeaterRearLeft: 2, SeatHeaterRearLeftBack: 3, SeatHeaterRearCenter: 4, SeatHeaterRearRight: 5, SeatHeaterRearRightBack: 6, SeatHeater3rdRowLeft: 7, SeatHeater3rdRowRight: 8'
+          description: 'The desired seat to adjust the cooler for.  SeatHeaterFrontLeft: 0, SeatHeaterFrontRight: 1, SeatHeaterRearLeft: 2, SeatHeaterRearLeftBack: 3, SeatHeaterRearCenter: 4, SeatHeaterRearRight: 5, SeatHeaterRearRightBack: 6, SeatHeater3rdRowLeft: 7, SeatHeater3rdRowRight: 8'
           format: int32
           enum:
           - 0
@@ -1475,96 +1532,17 @@ components:
           - 6
           - 7
           - 8
-        auto_climate_on:
-          type: boolean
-          description: Whether to enable or disable auto climate mode
-      example:
-        auto_seat_position: 0
-        auto_climate_on: true
-    SetCabinOverheatProtectionRequest:
-      title: Set Cabin Overheat Protection
-      type: object
-      properties:
-        'on':
-          type: boolean
-        fan_only:
-          type: boolean
-          description: Only supported by some vehicles. Must be false on unsupported vehicles.
-      example:
-        'on': true
-        fan_only: false
-    RemoteStartRequest:
-      title: Remote Start
-      type: object
-      properties:
-        password:
-          type: string
-          description: The password to the authenticated my.teslamotors.com account.
-      example:
-        password: hunter2
-    ScheduledChargingRequest:
-      title: Scheduled Charging Request
-      type: object
-      properties:
-        time:
+        seat_cooler_level:
           type: integer
-          description: Integer representing the desired charging start time. Value is number of minutes from midnight in intervals of 15
+          description: Seat cooler level
           format: int32
-        enable:
-          type: boolean
+          enum:
+          - 1
+          - 2
+          - 3
       example:
-        time: 60
-        enable: true
-    SetChargeLimitRequest:
-      title: Set Charge Limit
-      type: object
-      properties:
-        percent:
-          type: integer
-          description: Percentage to set Charge Limit to.
-          format: int32
-      example:
-        percent: 80
-    SetChargingAmpsRequest:
-      title: Set Charging Amps
-      type: object
-      properties:
-        charging_amps:
-          type: integer
-          description: Charging Current in Amps
-          format: int32
-      example:
-        charging_amps: 40
-    ScheduledDepartureRequest:
-      title: Scheduled Departure Request
-      type: object
-      properties:
-        departure_time:
-          type: integer
-          description: Integer representing the desired departure time. Value is number of minutes from midnight in intervals of 15
-          format: int32
-        enable:
-          type: boolean
-        preconditioning_enabled:
-          type: boolean
-        preconditioning_weekdays_only:
-          type: boolean
-        off_peak_charging_enabled:
-          type: boolean
-        off_peak_charging_weekdays_only:
-          type: boolean
-        end_off_peak_time:
-          type: integer
-          description: Integer representing the desired off peak end time. Value is number of minutes from midnight in intervals of 15
-          format: int32
-      example:
-        departure_time: 180
-        enable: true
-        preconditioning_enabled: true
-        preconditioning_weekdays_only: true
-        off_peak_charging_enabled: false
-        off_peak_charging_weekdays_only: false
-        end_off_peak_time: 60
+        seat_position: 0
+        seat_cooler_level: 2
     WakeUpResponse:
       title: Wake Up Response
       type: object
@@ -1604,11 +1582,33 @@ components:
               type: string
             backseat_token_updated_at:
               type: number
-    MaxDefrostRequest:
-      title: Max Defrost
+    MovePanoRoofRequest:
+      title: Move Panoramic Roof
       type: object
       properties:
-        'on':
-          type: boolean
+        state:
+          type: string
+          description: The desired state of the panoramic roof. The approximate percent open values for each state are `open` = 100%, `close` = 0%, `comfort` = 80%, and `vent` = ~15%
+          enum:
+          - open
+          - close
+          - comfort
+          - vent
+          - move
+          x-enum-elements:
+          - name: open
+            description: ''
+          - name: close
+            description: ''
+          - name: comfort
+            description: ''
+          - name: vent
+            description: ''
+          - name: move
+            description: ''
+        percent:
+          type: number
+          description: The percentage to move the roof to.
+          format: double
       example:
-        'on': true
+        state: vent

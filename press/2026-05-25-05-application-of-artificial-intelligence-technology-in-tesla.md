@@ -1,7 +1,9 @@
 ---
 title: Application of Artificial Intelligence Technology in Tesla
 url: https://zenodo.org/records/5775457/files/14.%20Artificial%20Intelligence_Fullpaper.pdf?download=1
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Tesla Motors" press release artificial intelligence'
 position: 5
 source: serpapi-google
